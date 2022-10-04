@@ -12,17 +12,19 @@ const Cart = (props) => {
             price: 12.99
         }].map(item=><li> {item.name}</li>)}
         </ul>
-
+    const test=()=>{
+        console.log("Ording order food")
+    }
     return (
-        <Modal>
+        <Modal hideModal= {props.hideModal}>
             {cartItems}
             <div>
                 <span>Total amount</span>
                 <span>321</span>
             </div>
             <div className={classes.actions}>
-                <button className={classes["button--alt"]}>Close</button>
-                <button className={classes.button}>Order</button>
+                <button className={classes["button--alt"]} onClick={props.hideModal}>Close</button>
+                <button className={classes.button} onClick={test}>Order</button>
             </div>
         </Modal>
 
