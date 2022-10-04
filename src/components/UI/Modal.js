@@ -2,7 +2,7 @@ import classes from "./Modal.module.css"
 import { Fragment } from "react"
 import ReactDom from "react-dom"
 const Backdrop = props => {
-    return (<div className={classes.backdrop}></div>)
+    return (<div className={classes.backdrop} onClick={props.hideModal}></div>)
 
 }
 
@@ -17,8 +17,8 @@ const protalElement = document.getElementById("overlays") //need to change in pu
 const Modal = props => {
         return (
             <Fragment>
-                {ReactDom.createPortal(<Backdrop/>,protalElement)}
-                {ReactDom.createPortal(<ModalOverlay>{props.children}</ModalOverlay>,protalElement)}
+                {ReactDom.createPortal(<Backdrop hideModal={props.hideModal}/>,protalElement)}
+                {ReactDom.createPortal(<ModalOverlay>{props.children} </ModalOverlay>,protalElement)}
             </Fragment>)
     
     }
