@@ -19,20 +19,22 @@ const Cart = (props) => {
     //     }].map(item => <li> {item.name}</li>)}
     // </ul>
 
-    const removeItem=(e)=>{
-        e.preventDefault()
-
+    const removeItem=(id)=>{
+        cartCtx.removeItem(id);
     }
 
 
-    const addItem=(e)=>{
-        e.preventDefault()
+    const addItem=(item)=>{
+        cartCtx.addItem(item)
+           
     }
 
 
     // const cartItems = <ul>{cartCtx.items.map(item => <li> {item.amount} {item.name}</li>)}
     // </ul>
-    const cartItems = <ul>{cartCtx.items.map(item => <li> <CartItem 
+    const cartItems = <ul>{cartCtx.items.map(item => <li> <CartItem
+    onAdd={addItem.bind(null,{...item,amount:1})}
+    onRemove={removeItem.bind(null,item.id)}  
     amount={item.amount} 
     name={item.name} 
     price={item.price}
@@ -41,7 +43,7 @@ const Cart = (props) => {
     
 
 
-    const test = () => {
+    const orderApi = () => {
         console.log("Ording order food")
     }
     return (
@@ -53,7 +55,7 @@ const Cart = (props) => {
             </div>
             <div className={classes.actions}>
                 <button className={classes["button--alt"]} onClick={props.hideModal}>Close</button>
-                <button className={classes.button} onClick={test}>Order</button>
+                <button className={classes.button} onClick={orderApi}>Order</button>
             </div>
         </Modal>
 
