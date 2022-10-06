@@ -1,7 +1,13 @@
 import classes from "./MealItem.module.css"
 import MealItemForm from "./MealItemForm"
+
+import { useRef } from "react"
+
+
 const MealItem = (props) => {
     const price_ = `$${props.price}`
+    const amoutEntered = useRef()
+
     return (
         <li className={classes.meal}>
             <div>
@@ -10,7 +16,7 @@ const MealItem = (props) => {
                 <div className={classes.price}>{price_}</div>
             </div>
             <div>
-                <MealItemForm/>
+                <MealItemForm ref={amoutEntered} name={props.name} price={props.price} />
             </div>
         </li>)
 }
